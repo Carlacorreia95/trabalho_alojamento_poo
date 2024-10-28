@@ -14,5 +14,6 @@ namespace Trabalho_Alojamento_POO
         private int reservation_id;
         private string reservation_name;
 
+
     }
 }

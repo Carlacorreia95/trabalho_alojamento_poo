@@ -6,5 +6,10 @@ namespace Trabalho_Alojamento_POO
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
