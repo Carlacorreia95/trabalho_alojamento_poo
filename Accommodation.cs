@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho_Alojamento_POO
 {
-    internal class Accommodation
+    public class Accommodation
     {
         private int id;
         private int capacity { get; set; }
@@ -20,7 +20,11 @@ namespace Trabalho_Alojamento_POO
             this.capacity = capacity;
             this.area = area;
         }
-            
+        public int Id()
+        {
+            return this.id;
+        }
+
     }
     #region Class_Room 
     internal class Room : Accommodation
@@ -30,7 +34,8 @@ namespace Trabalho_Alojamento_POO
         {
             this.floor = floor;
         }
-        
+
+
     }
     #endregion
     #region Class_villa

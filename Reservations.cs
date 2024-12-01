@@ -8,12 +8,23 @@ namespace Trabalho_Alojamento_POO
 {
     internal class Reservations
     {
-        private int begining_date;
-        private int ending_date;
+        private DateTime begining_date;
+        private DateTime ending_date;
         private int accommodation_id;
         private int reservation_id;
-        private string reservation_name;
+        private int employee_id;
+        private long fiscal_number;
+       // private enum operator;
+       // private enum operator;
 
-
+        public Reservations(DateTime begining_date, DateTime ending_date, int accommodation_id, int reservation_id, int employee_id, long fiscal_number)
+        {
+            this.begining_date = begining_date;
+            this.ending_date = ending_date;
+            this.accommodation_id = accommodation_id;
+            this.reservation_id = reservation_id;
+            this.employee_id = employee_id;
+            this.fiscal_number = fiscal_number;
+        }
     }
 }

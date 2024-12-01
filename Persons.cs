@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Trabalho_Alojamento_POO
 {
-    internal class Person
+    public class Person
     {
-        private int age;
-        private string name;
-        private string sex;
+        public int age { get; set; }
+        public string name { get; set; }
+        public string sex { get; set; }
 
-        public Person(int age, string name, string sex, int id_person) 
+        public Person(int age, string name, string sex) 
         { 
             this.age = age; // alterar para birth date
             this.name = name;
@@ -21,26 +23,37 @@ namespace Trabalho_Alojamento_POO
     
     }
     #region Client
-    internal class Client : Person
-    { 
-        private long fiscal_number;
 
-        public Client(int age, string name, string sex,int id_person ,long fiscal_number): base(age, name, sex, id_person)
+    public class Client : Person
+    { 
+        public long fiscal_number { get; set; }
+
+        public Client(int age, string name, string sex,long fiscal_number): base(age, name, sex)
         {
             this.fiscal_number = fiscal_number;
         }
-    }
+        public long Fiscal_number()
+        { 
+            return this.fiscal_number; 
+        }
+     }
     #endregion
     #region Employee
-    internal class Employee : Person
+        public class Employee : Person
     {
         private string position;
         private string section;
+        private int employee_id;
 
-        public Employee(int age, string name, string sex, int id_person, string position, string section) : base(age, name, sex, id_person)
+        public Employee(int age, string name, string sex, int employee_id, string position, string section) : base(age, name, sex)
         {
             this.position = position;
             this.section = section;
+            this.employee_id = employee_id;
+        }
+        public long Employee_id()
+        {
+            return this.employee_id;
         }
     }
     #endregion
