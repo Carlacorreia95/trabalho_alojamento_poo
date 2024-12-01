@@ -11,14 +11,12 @@ namespace Trabalho_Alojamento_POO
         private int age;
         private string name;
         private string sex;
-        private int id_person;
 
         public Person(int age, string name, string sex, int id_person) 
         { 
             this.age = age; // alterar para birth date
             this.name = name;
             this.sex = sex;
-            this.id_person = id_person;
         }
     
     }
