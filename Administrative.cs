@@ -11,15 +11,10 @@ namespace Trabalho_Alojamento_POO
     public class Administrative
     {
 
-        //criar lista de clientes
-        public string filePath = "Clients.json";
-        
-        private List<Client> client_list = new List<Client>();
-        private List<Accommodation> accommodation_list = new List<Accommodation>();
-        private List<Employee> employee_list = new List<Employee>();
+              
 
-        #region clients file management
-        private bool Update_json() 
+        public string filePath = "Clients.json";
+        private bool Update_json_client() 
         {
             try
             {
@@ -41,6 +36,8 @@ namespace Trabalho_Alojamento_POO
             }
             
         }
+
+       
         public bool Load_data()
         {
             if (File.Exists(filePath) && new FileInfo(filePath).Length > 0)
@@ -54,6 +51,8 @@ namespace Trabalho_Alojamento_POO
             }
             return true;
         }
+        #region clients file management  
+        private List<Client> client_list = new List<Client>();
         public void Add_client(Client client)
         {
             this.client_list.Add(client);
@@ -62,16 +61,17 @@ namespace Trabalho_Alojamento_POO
         }
         public void Remove_client(long fiscal_number) 
         { 
-            // this.client_list.RemoveAll(client=>client.Fiscal_number()== fiscal_number);
-            Update_json();
+            this.client_list.RemoveAll(client=>client.Fiscal_number()== fiscal_number);
+            Update_json_client();
         }
         public void Search_client(long fiscal_number) 
         {
-            //this.client_list.Find(client=>client.Fiscal_number()==fiscal_number);
+           this.client_list.Find(client=>client.Fiscal_number()==fiscal_number);
         }
         #endregion
 
         #region accommodation file managment
+        private List<Accommodation> accommodation_list = new List<Accommodation>();
         public void Add_accommodation(Accommodation accommodation)
         {
             this.accommodation_list.Add(accommodation);
@@ -90,6 +90,7 @@ namespace Trabalho_Alojamento_POO
         #endregion
 
         #region Employee file managment
+        private List<Employee> employee_list = new List<Employee>();
         public void Add_employee(Employee employee)
         {
             this.employee_list.Add(employee);
