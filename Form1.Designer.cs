@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TabPage tb_accomodations;
+            TabPage tp_room;
             Remove_accomodation_button = new Button();
             textBox7 = new TextBox();
             label7 = new Label();
@@ -39,15 +39,15 @@
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
-            Add_accomodation_button = new Button();
+            Add_room_button = new Button();
             textBox9 = new TextBox();
             textBox10 = new TextBox();
             textBox11 = new TextBox();
-            textBox12 = new TextBox();
+            tb_age_add_accomodation = new TextBox();
             design = new TabControl();
             who = new TabPage();
             Client = new Button();
-            tb_client = new TabPage();
+            tp_client = new TabPage();
             Remove_client_button = new Button();
             tb_fiscal_number_remove_client = new TextBox();
             label6 = new Label();
@@ -63,57 +63,58 @@
             tb_sex_add_client = new TextBox();
             tb_name_add_client = new TextBox();
             tb_age_add_client = new TextBox();
-            tb_employee = new TabPage();
+            tp_employee = new TabPage();
+            label14 = new Label();
+            tb_section_add_employee = new TextBox();
             label13 = new Label();
             tb_position_add_employee = new TextBox();
             Remove_employee_button = new Button();
             tb_employee_id_remove_employee = new TextBox();
-            tb_employee_remove = new Label();
+            lb_employee_remove = new Label();
             Search_employee_button = new Button();
             tb_employee_id_search_employee = new TextBox();
-            tb_employee_id_search = new Label();
-            tb_employee_id_add = new Label();
-            tb_employee_sex_add = new Label();
-            tb_employee_name_add = new Label();
-            tb_employee_age_add = new Label();
+            lb_employee_id_search = new Label();
+            lb_employee_id_add = new Label();
+            lb_employee_sex_add = new Label();
+            lb_employee_name_add = new Label();
+            lb_employee_age_add = new Label();
             Add_employee_button = new Button();
             tb_employee_id_add_employee = new TextBox();
             tb_sex_add_employee = new TextBox();
             tb_name_add_employee = new TextBox();
             tb_age_add_employee = new TextBox();
-            label14 = new Label();
-            tb_section_add_employee = new TextBox();
-            tb_accomodations = new TabPage();
-            tb_accomodations.SuspendLayout();
+            tp_villa = new TabPage();
+            tp_room = new TabPage();
+            tp_room.SuspendLayout();
             design.SuspendLayout();
             who.SuspendLayout();
-            tb_client.SuspendLayout();
-            tb_employee.SuspendLayout();
+            tp_client.SuspendLayout();
+            tp_employee.SuspendLayout();
             SuspendLayout();
             // 
-            // tb_accomodations
+            // tp_room
             // 
-            tb_accomodations.Controls.Add(Remove_accomodation_button);
-            tb_accomodations.Controls.Add(textBox7);
-            tb_accomodations.Controls.Add(label7);
-            tb_accomodations.Controls.Add(Search_accomodation_button);
-            tb_accomodations.Controls.Add(textBox8);
-            tb_accomodations.Controls.Add(label8);
-            tb_accomodations.Controls.Add(label9);
-            tb_accomodations.Controls.Add(label10);
-            tb_accomodations.Controls.Add(label11);
-            tb_accomodations.Controls.Add(label12);
-            tb_accomodations.Controls.Add(Add_accomodation_button);
-            tb_accomodations.Controls.Add(textBox9);
-            tb_accomodations.Controls.Add(textBox10);
-            tb_accomodations.Controls.Add(textBox11);
-            tb_accomodations.Controls.Add(textBox12);
-            tb_accomodations.Location = new Point(4, 29);
-            tb_accomodations.Name = "tb_accomodations";
-            tb_accomodations.Size = new Size(768, 393);
-            tb_accomodations.TabIndex = 3;
-            tb_accomodations.Text = "Accomodation_management";
-            tb_accomodations.UseVisualStyleBackColor = true;
+            tp_room.Controls.Add(Remove_accomodation_button);
+            tp_room.Controls.Add(textBox7);
+            tp_room.Controls.Add(label7);
+            tp_room.Controls.Add(Search_accomodation_button);
+            tp_room.Controls.Add(textBox8);
+            tp_room.Controls.Add(label8);
+            tp_room.Controls.Add(label9);
+            tp_room.Controls.Add(label10);
+            tp_room.Controls.Add(label11);
+            tp_room.Controls.Add(label12);
+            tp_room.Controls.Add(Add_room_button);
+            tp_room.Controls.Add(textBox9);
+            tp_room.Controls.Add(textBox10);
+            tp_room.Controls.Add(textBox11);
+            tp_room.Controls.Add(tb_age_add_accomodation);
+            tp_room.Location = new Point(4, 29);
+            tp_room.Name = "tp_room";
+            tp_room.Size = new Size(768, 393);
+            tp_room.TabIndex = 3;
+            tp_room.Text = "Room_management";
+            tp_room.UseVisualStyleBackColor = true;
             // 
             // Remove_accomodation_button
             // 
@@ -168,47 +169,47 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(85, 141);
+            label9.Location = new Point(132, 144);
             label9.Name = "label9";
-            label9.Size = new Size(103, 20);
+            label9.Size = new Size(40, 20);
             label9.TabIndex = 38;
-            label9.Text = "Fiscal Number";
+            label9.Text = "Type";
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Location = new Point(132, 115);
             label10.Name = "label10";
-            label10.Size = new Size(30, 20);
+            label10.Size = new Size(40, 20);
             label10.TabIndex = 37;
-            label10.Text = "sex";
+            label10.Text = "Area";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Location = new Point(132, 82);
             label11.Name = "label11";
-            label11.Size = new Size(46, 20);
+            label11.Size = new Size(66, 20);
             label11.TabIndex = 36;
-            label11.Text = "name";
+            label11.Text = "Capacity";
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Location = new Point(132, 49);
             label12.Name = "label12";
-            label12.Size = new Size(34, 20);
+            label12.Size = new Size(22, 20);
             label12.TabIndex = 35;
-            label12.Text = "age";
+            label12.Text = "Id";
             // 
-            // Add_accomodation_button
+            // Add_room_button
             // 
-            Add_accomodation_button.Location = new Point(428, 139);
-            Add_accomodation_button.Name = "Add_accomodation_button";
-            Add_accomodation_button.Size = new Size(94, 29);
-            Add_accomodation_button.TabIndex = 34;
-            Add_accomodation_button.Text = "Add";
-            Add_accomodation_button.UseVisualStyleBackColor = true;
+            Add_room_button.Location = new Point(428, 139);
+            Add_room_button.Name = "Add_room_button";
+            Add_room_button.Size = new Size(94, 29);
+            Add_room_button.TabIndex = 34;
+            Add_room_button.Text = "Add";
+            Add_room_button.UseVisualStyleBackColor = true;
             // 
             // textBox9
             // 
@@ -231,19 +232,20 @@
             textBox11.Size = new Size(193, 27);
             textBox11.TabIndex = 31;
             // 
-            // textBox12
+            // tb_age_add_accomodation
             // 
-            textBox12.Location = new Point(207, 42);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(193, 27);
-            textBox12.TabIndex = 30;
+            tb_age_add_accomodation.Location = new Point(207, 42);
+            tb_age_add_accomodation.Name = "tb_age_add_accomodation";
+            tb_age_add_accomodation.Size = new Size(193, 27);
+            tb_age_add_accomodation.TabIndex = 30;
             // 
             // design
             // 
             design.Controls.Add(who);
-            design.Controls.Add(tb_client);
-            design.Controls.Add(tb_employee);
-            design.Controls.Add(tb_accomodations);
+            design.Controls.Add(tp_client);
+            design.Controls.Add(tp_employee);
+            design.Controls.Add(tp_room);
+            design.Controls.Add(tp_villa);
             design.Location = new Point(12, 12);
             design.Name = "design";
             design.SelectedIndex = 0;
@@ -270,30 +272,30 @@
             Client.Text = "button1";
             Client.UseVisualStyleBackColor = true;
             // 
-            // tb_client
+            // tp_client
             // 
-            tb_client.Controls.Add(Remove_client_button);
-            tb_client.Controls.Add(tb_fiscal_number_remove_client);
-            tb_client.Controls.Add(label6);
-            tb_client.Controls.Add(search_client_button);
-            tb_client.Controls.Add(tb_fiscal_number_search_client);
-            tb_client.Controls.Add(label5);
-            tb_client.Controls.Add(label4);
-            tb_client.Controls.Add(label3);
-            tb_client.Controls.Add(label2);
-            tb_client.Controls.Add(label1);
-            tb_client.Controls.Add(Add_client_button);
-            tb_client.Controls.Add(tb_fiscal_number_add_client);
-            tb_client.Controls.Add(tb_sex_add_client);
-            tb_client.Controls.Add(tb_name_add_client);
-            tb_client.Controls.Add(tb_age_add_client);
-            tb_client.Location = new Point(4, 29);
-            tb_client.Name = "tb_client";
-            tb_client.Padding = new Padding(3);
-            tb_client.Size = new Size(768, 393);
-            tb_client.TabIndex = 0;
-            tb_client.Text = "Client_management";
-            tb_client.UseVisualStyleBackColor = true;
+            tp_client.Controls.Add(Remove_client_button);
+            tp_client.Controls.Add(tb_fiscal_number_remove_client);
+            tp_client.Controls.Add(label6);
+            tp_client.Controls.Add(search_client_button);
+            tp_client.Controls.Add(tb_fiscal_number_search_client);
+            tp_client.Controls.Add(label5);
+            tp_client.Controls.Add(label4);
+            tp_client.Controls.Add(label3);
+            tp_client.Controls.Add(label2);
+            tp_client.Controls.Add(label1);
+            tp_client.Controls.Add(Add_client_button);
+            tp_client.Controls.Add(tb_fiscal_number_add_client);
+            tp_client.Controls.Add(tb_sex_add_client);
+            tp_client.Controls.Add(tb_name_add_client);
+            tp_client.Controls.Add(tb_age_add_client);
+            tp_client.Location = new Point(4, 29);
+            tp_client.Name = "tp_client";
+            tp_client.Padding = new Padding(3);
+            tp_client.Size = new Size(768, 393);
+            tp_client.TabIndex = 0;
+            tp_client.Text = "Client_management";
+            tp_client.UseVisualStyleBackColor = true;
             // 
             // Remove_client_button
             // 
@@ -421,34 +423,50 @@
             tb_age_add_client.Size = new Size(193, 27);
             tb_age_add_client.TabIndex = 0;
             // 
-            // tb_employee
+            // tp_employee
             // 
-            tb_employee.Controls.Add(label14);
-            tb_employee.Controls.Add(tb_section_add_employee);
-            tb_employee.Controls.Add(label13);
-            tb_employee.Controls.Add(tb_position_add_employee);
-            tb_employee.Controls.Add(Remove_employee_button);
-            tb_employee.Controls.Add(tb_employee_id_remove_employee);
-            tb_employee.Controls.Add(tb_employee_remove);
-            tb_employee.Controls.Add(Search_employee_button);
-            tb_employee.Controls.Add(tb_employee_id_search_employee);
-            tb_employee.Controls.Add(tb_employee_id_search);
-            tb_employee.Controls.Add(tb_employee_id_add);
-            tb_employee.Controls.Add(tb_employee_sex_add);
-            tb_employee.Controls.Add(tb_employee_name_add);
-            tb_employee.Controls.Add(tb_employee_age_add);
-            tb_employee.Controls.Add(Add_employee_button);
-            tb_employee.Controls.Add(tb_employee_id_add_employee);
-            tb_employee.Controls.Add(tb_sex_add_employee);
-            tb_employee.Controls.Add(tb_name_add_employee);
-            tb_employee.Controls.Add(tb_age_add_employee);
-            tb_employee.Location = new Point(4, 29);
-            tb_employee.Name = "tb_employee";
-            tb_employee.Padding = new Padding(3);
-            tb_employee.Size = new Size(768, 393);
-            tb_employee.TabIndex = 2;
-            tb_employee.Text = "Employee_management";
-            tb_employee.UseVisualStyleBackColor = true;
+            tp_employee.Controls.Add(label14);
+            tp_employee.Controls.Add(tb_section_add_employee);
+            tp_employee.Controls.Add(label13);
+            tp_employee.Controls.Add(tb_position_add_employee);
+            tp_employee.Controls.Add(Remove_employee_button);
+            tp_employee.Controls.Add(tb_employee_id_remove_employee);
+            tp_employee.Controls.Add(lb_employee_remove);
+            tp_employee.Controls.Add(Search_employee_button);
+            tp_employee.Controls.Add(tb_employee_id_search_employee);
+            tp_employee.Controls.Add(lb_employee_id_search);
+            tp_employee.Controls.Add(lb_employee_id_add);
+            tp_employee.Controls.Add(lb_employee_sex_add);
+            tp_employee.Controls.Add(lb_employee_name_add);
+            tp_employee.Controls.Add(lb_employee_age_add);
+            tp_employee.Controls.Add(Add_employee_button);
+            tp_employee.Controls.Add(tb_employee_id_add_employee);
+            tp_employee.Controls.Add(tb_sex_add_employee);
+            tp_employee.Controls.Add(tb_name_add_employee);
+            tp_employee.Controls.Add(tb_age_add_employee);
+            tp_employee.Location = new Point(4, 29);
+            tp_employee.Name = "tp_employee";
+            tp_employee.Padding = new Padding(3);
+            tp_employee.Size = new Size(768, 393);
+            tp_employee.TabIndex = 2;
+            tp_employee.Text = "Employee_management";
+            tp_employee.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(62, 198);
+            label14.Name = "label14";
+            label14.Size = new Size(58, 20);
+            label14.TabIndex = 33;
+            label14.Text = "Section";
+            // 
+            // tb_section_add_employee
+            // 
+            tb_section_add_employee.Location = new Point(184, 198);
+            tb_section_add_employee.Name = "tb_section_add_employee";
+            tb_section_add_employee.Size = new Size(193, 27);
+            tb_section_add_employee.TabIndex = 32;
             // 
             // label13
             // 
@@ -474,6 +492,7 @@
             Remove_employee_button.TabIndex = 29;
             Remove_employee_button.Text = "Remove";
             Remove_employee_button.UseVisualStyleBackColor = true;
+            Remove_employee_button.Click += Remove_employee_button_Click;
             // 
             // tb_employee_id_remove_employee
             // 
@@ -482,14 +501,14 @@
             tb_employee_id_remove_employee.Size = new Size(193, 27);
             tb_employee_id_remove_employee.TabIndex = 28;
             // 
-            // tb_employee_remove
+            // lb_employee_remove
             // 
-            tb_employee_remove.AutoSize = true;
-            tb_employee_remove.Location = new Point(62, 343);
-            tb_employee_remove.Name = "tb_employee_remove";
-            tb_employee_remove.Size = new Size(94, 20);
-            tb_employee_remove.TabIndex = 27;
-            tb_employee_remove.Text = "Employee ID";
+            lb_employee_remove.AutoSize = true;
+            lb_employee_remove.Location = new Point(62, 343);
+            lb_employee_remove.Name = "lb_employee_remove";
+            lb_employee_remove.Size = new Size(94, 20);
+            lb_employee_remove.TabIndex = 27;
+            lb_employee_remove.Text = "Employee ID";
             // 
             // Search_employee_button
             // 
@@ -499,6 +518,7 @@
             Search_employee_button.TabIndex = 26;
             Search_employee_button.Text = "Search";
             Search_employee_button.UseVisualStyleBackColor = true;
+            Search_employee_button.Click += Search_employee_button_Click;
             // 
             // tb_employee_id_search_employee
             // 
@@ -507,54 +527,54 @@
             tb_employee_id_search_employee.Size = new Size(193, 27);
             tb_employee_id_search_employee.TabIndex = 25;
             // 
-            // tb_employee_id_search
+            // lb_employee_id_search
             // 
-            tb_employee_id_search.AutoSize = true;
-            tb_employee_id_search.Location = new Point(62, 290);
-            tb_employee_id_search.Name = "tb_employee_id_search";
-            tb_employee_id_search.Size = new Size(94, 20);
-            tb_employee_id_search.TabIndex = 24;
-            tb_employee_id_search.Text = "Employee ID";
+            lb_employee_id_search.AutoSize = true;
+            lb_employee_id_search.Location = new Point(62, 290);
+            lb_employee_id_search.Name = "lb_employee_id_search";
+            lb_employee_id_search.Size = new Size(94, 20);
+            lb_employee_id_search.TabIndex = 24;
+            lb_employee_id_search.Text = "Employee ID";
             // 
-            // tb_employee_id_add
+            // lb_employee_id_add
             // 
-            tb_employee_id_add.AutoSize = true;
-            tb_employee_id_add.Location = new Point(62, 129);
-            tb_employee_id_add.Name = "tb_employee_id_add";
-            tb_employee_id_add.Size = new Size(94, 20);
-            tb_employee_id_add.TabIndex = 23;
-            tb_employee_id_add.Text = "Employee ID";
+            lb_employee_id_add.AutoSize = true;
+            lb_employee_id_add.Location = new Point(62, 129);
+            lb_employee_id_add.Name = "lb_employee_id_add";
+            lb_employee_id_add.Size = new Size(94, 20);
+            lb_employee_id_add.TabIndex = 23;
+            lb_employee_id_add.Text = "Employee ID";
             // 
-            // tb_employee_sex_add
+            // lb_employee_sex_add
             // 
-            tb_employee_sex_add.AutoSize = true;
-            tb_employee_sex_add.Location = new Point(109, 103);
-            tb_employee_sex_add.Name = "tb_employee_sex_add";
-            tb_employee_sex_add.Size = new Size(30, 20);
-            tb_employee_sex_add.TabIndex = 22;
-            tb_employee_sex_add.Text = "sex";
+            lb_employee_sex_add.AutoSize = true;
+            lb_employee_sex_add.Location = new Point(109, 103);
+            lb_employee_sex_add.Name = "lb_employee_sex_add";
+            lb_employee_sex_add.Size = new Size(30, 20);
+            lb_employee_sex_add.TabIndex = 22;
+            lb_employee_sex_add.Text = "sex";
             // 
-            // tb_employee_name_add
+            // lb_employee_name_add
             // 
-            tb_employee_name_add.AutoSize = true;
-            tb_employee_name_add.Location = new Point(109, 70);
-            tb_employee_name_add.Name = "tb_employee_name_add";
-            tb_employee_name_add.Size = new Size(46, 20);
-            tb_employee_name_add.TabIndex = 21;
-            tb_employee_name_add.Text = "name";
+            lb_employee_name_add.AutoSize = true;
+            lb_employee_name_add.Location = new Point(109, 70);
+            lb_employee_name_add.Name = "lb_employee_name_add";
+            lb_employee_name_add.Size = new Size(46, 20);
+            lb_employee_name_add.TabIndex = 21;
+            lb_employee_name_add.Text = "name";
             // 
-            // tb_employee_age_add
+            // lb_employee_age_add
             // 
-            tb_employee_age_add.AutoSize = true;
-            tb_employee_age_add.Location = new Point(109, 37);
-            tb_employee_age_add.Name = "tb_employee_age_add";
-            tb_employee_age_add.Size = new Size(34, 20);
-            tb_employee_age_add.TabIndex = 20;
-            tb_employee_age_add.Text = "age";
+            lb_employee_age_add.AutoSize = true;
+            lb_employee_age_add.Location = new Point(109, 37);
+            lb_employee_age_add.Name = "lb_employee_age_add";
+            lb_employee_age_add.Size = new Size(34, 20);
+            lb_employee_age_add.TabIndex = 20;
+            lb_employee_age_add.Text = "age";
             // 
             // Add_employee_button
             // 
-            Add_employee_button.Location = new Point(405, 127);
+            Add_employee_button.Location = new Point(405, 196);
             Add_employee_button.Name = "Add_employee_button";
             Add_employee_button.Size = new Size(94, 29);
             Add_employee_button.TabIndex = 19;
@@ -590,21 +610,14 @@
             tb_age_add_employee.Size = new Size(193, 27);
             tb_age_add_employee.TabIndex = 15;
             // 
-            // label14
+            // tp_villa
             // 
-            label14.AutoSize = true;
-            label14.Location = new Point(62, 198);
-            label14.Name = "label14";
-            label14.Size = new Size(58, 20);
-            label14.TabIndex = 33;
-            label14.Text = "Section";
-            // 
-            // tb_section_add_employee
-            // 
-            tb_section_add_employee.Location = new Point(184, 198);
-            tb_section_add_employee.Name = "tb_section_add_employee";
-            tb_section_add_employee.Size = new Size(193, 27);
-            tb_section_add_employee.TabIndex = 32;
+            tp_villa.Location = new Point(4, 29);
+            tp_villa.Name = "tp_villa";
+            tp_villa.Size = new Size(768, 393);
+            tp_villa.TabIndex = 4;
+            tp_villa.Text = "villa_management";
+            tp_villa.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -614,21 +627,21 @@
             Controls.Add(design);
             Name = "Form1";
             Text = "Form1";
-            tb_accomodations.ResumeLayout(false);
-            tb_accomodations.PerformLayout();
+            tp_room.ResumeLayout(false);
+            tp_room.PerformLayout();
             design.ResumeLayout(false);
             who.ResumeLayout(false);
-            tb_client.ResumeLayout(false);
-            tb_client.PerformLayout();
-            tb_employee.ResumeLayout(false);
-            tb_employee.PerformLayout();
+            tp_client.ResumeLayout(false);
+            tp_client.PerformLayout();
+            tp_employee.ResumeLayout(false);
+            tp_employee.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TabControl design;
-        private TabPage tb_client;
+        private TabPage tp_client;
         private TextBox tb_age_add_client;
         private TabPage who;
         private TextBox tb_name_add_client;
@@ -645,18 +658,18 @@
         private Label label5;
         private Button Remove_client_button;
         private TextBox tb_fiscal_number_remove_client;
-        private TabPage tb_employee;
+        private TabPage tp_employee;
         private Button Client;
         private Button Remove_employee_button;
         private TextBox tb_employee_id_remove_employee;
-        private Label tb_employee_remove;
+        private Label lb_employee_remove;
         private Button Search_employee_button;
         private TextBox tb_employee_id_search_employee;
-        private Label tb_employee_id_search;
-        private Label tb_employee_id_add;
-        private Label tb_employee_sex_add;
-        private Label tb_employee_name_add;
-        private Label tb_employee_age_add;
+        private Label lb_employee_id_search;
+        private Label lb_employee_id_add;
+        private Label lb_employee_sex_add;
+        private Label lb_employee_name_add;
+        private Label lb_employee_age_add;
         private Button Add_employee_button;
         private TextBox tb_employee_id_add_employee;
         private TextBox tb_sex_add_employee;
@@ -672,14 +685,15 @@
         private Label label10;
         private Label label11;
         private Label label12;
-        private Button Add_accomodation_button;
+        private Button Add_room_button;
         private TextBox textBox9;
         private TextBox textBox10;
         private TextBox textBox11;
-        private TextBox textBox12;
+        private TextBox tb_age_add_accomodation;
         private Label label13;
         private TextBox tb_position_add_employee;
         private Label label14;
         private TextBox tb_section_add_employee;
+        private TabPage tp_villa;
     }
 }

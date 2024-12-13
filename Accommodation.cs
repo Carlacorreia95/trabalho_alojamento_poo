@@ -27,7 +27,7 @@ namespace Trabalho_Alojamento_POO
 
     }
     #region Class_Room 
-    internal class Room : Accommodation
+    public class Room : Accommodation
     {
         private int floor {  get; set; }
         internal Room(int id, int capacity, float area, int floor): base(id, capacity, area)
@@ -39,7 +39,7 @@ namespace Trabalho_Alojamento_POO
     }
     #endregion
     #region Class_villa
-    internal class Villa : Accommodation
+    public class Villa : Accommodation
     {
         private bool kitchen;
         private bool sofa_bed;

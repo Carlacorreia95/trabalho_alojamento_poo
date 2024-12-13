@@ -45,16 +45,15 @@ namespace Trabalho_Alojamento_POO
         private string section;
         private int employee_id;
 
+        public int Employee_id { get => employee_id; }
+
         public Employee(int age, string name, string sex, int employee_id, string position, string section) : base(age, name, sex)
         {
             this.position = position;
             this.section = section;
             this.employee_id = employee_id;
         }
-        public long Employee_id()
-        {
-            return this.employee_id;
-        }
+
     }
     #endregion
 }
