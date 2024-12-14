@@ -43,8 +43,6 @@
             tb_area_add_room = new TextBox();
             tb_capacity_add_room = new TextBox();
             design = new TabControl();
-            who = new TabPage();
-            Client = new Button();
             tp_client = new TabPage();
             Remove_client_button = new Button();
             tb_fiscal_number_remove_client = new TextBox();
@@ -98,6 +96,8 @@
             tb_area_add_villa = new TextBox();
             tb_capacity_add_villa = new TextBox();
             Reservations = new TabPage();
+            bt_search_dates = new Button();
+            lbx_Reservations = new ListBox();
             remove_reservation_button = new Button();
             tb_reservation_remove = new TextBox();
             label17 = new Label();
@@ -107,15 +107,12 @@
             add_reservation_button = new Button();
             lb_fiscal_number = new Label();
             lb_employee_id = new Label();
-            lb_accommodation_ID = new Label();
             tb_fiscal_number_reservation = new TextBox();
             tb_employee_id_reservation = new TextBox();
-            tb_accomodation_ID_reservation = new TextBox();
             monthCalendar1 = new MonthCalendar();
             tp_room = new TabPage();
             tp_room.SuspendLayout();
             design.SuspendLayout();
-            who.SuspendLayout();
             tp_client.SuspendLayout();
             tp_employee.SuspendLayout();
             tp_villa.SuspendLayout();
@@ -256,7 +253,6 @@
             // 
             // design
             // 
-            design.Controls.Add(who);
             design.Controls.Add(tp_client);
             design.Controls.Add(tp_employee);
             design.Controls.Add(tp_room);
@@ -267,26 +263,6 @@
             design.SelectedIndex = 0;
             design.Size = new Size(776, 426);
             design.TabIndex = 1;
-            // 
-            // who
-            // 
-            who.BackColor = Color.Moccasin;
-            who.Controls.Add(Client);
-            who.Location = new Point(4, 29);
-            who.Name = "who";
-            who.Padding = new Padding(3);
-            who.Size = new Size(768, 393);
-            who.TabIndex = 1;
-            who.Text = "Who";
-            // 
-            // Client
-            // 
-            Client.Location = new Point(219, 112);
-            Client.Name = "Client";
-            Client.Size = new Size(94, 29);
-            Client.TabIndex = 0;
-            Client.Text = "button1";
-            Client.UseVisualStyleBackColor = true;
             // 
             // tp_client
             // 
@@ -784,6 +760,8 @@
             // 
             // Reservations
             // 
+            Reservations.Controls.Add(bt_search_dates);
+            Reservations.Controls.Add(lbx_Reservations);
             Reservations.Controls.Add(remove_reservation_button);
             Reservations.Controls.Add(tb_reservation_remove);
             Reservations.Controls.Add(label17);
@@ -793,10 +771,8 @@
             Reservations.Controls.Add(add_reservation_button);
             Reservations.Controls.Add(lb_fiscal_number);
             Reservations.Controls.Add(lb_employee_id);
-            Reservations.Controls.Add(lb_accommodation_ID);
             Reservations.Controls.Add(tb_fiscal_number_reservation);
             Reservations.Controls.Add(tb_employee_id_reservation);
-            Reservations.Controls.Add(tb_accomodation_ID_reservation);
             Reservations.Controls.Add(monthCalendar1);
             Reservations.Location = new Point(4, 29);
             Reservations.Name = "Reservations";
@@ -805,6 +781,25 @@
             Reservations.TabIndex = 5;
             Reservations.Text = "Reservations";
             Reservations.UseVisualStyleBackColor = true;
+            // 
+            // bt_search_dates
+            // 
+            bt_search_dates.Location = new Point(329, 115);
+            bt_search_dates.Name = "bt_search_dates";
+            bt_search_dates.Size = new Size(116, 29);
+            bt_search_dates.TabIndex = 55;
+            bt_search_dates.Text = "Search dates";
+            bt_search_dates.UseVisualStyleBackColor = true;
+            bt_search_dates.Click += bt_search_dates_Click;
+            // 
+            // lbx_Reservations
+            // 
+            lbx_Reservations.FormattingEnabled = true;
+            lbx_Reservations.Location = new Point(44, 29);
+            lbx_Reservations.Name = "lbx_Reservations";
+            lbx_Reservations.Size = new Size(279, 204);
+            lbx_Reservations.TabIndex = 54;
+            lbx_Reservations.SelectedIndexChanged += lbx_Reservations_SelectedIndexChanged;
             // 
             // remove_reservation_button
             // 
@@ -858,7 +853,7 @@
             // 
             // add_reservation_button
             // 
-            add_reservation_button.Location = new Point(167, 145);
+            add_reservation_button.Location = new Point(153, 357);
             add_reservation_button.Name = "add_reservation_button";
             add_reservation_button.Size = new Size(94, 29);
             add_reservation_button.TabIndex = 46;
@@ -869,7 +864,7 @@
             // lb_fiscal_number
             // 
             lb_fiscal_number.AutoSize = true;
-            lb_fiscal_number.Location = new Point(58, 107);
+            lb_fiscal_number.Location = new Point(44, 319);
             lb_fiscal_number.Name = "lb_fiscal_number";
             lb_fiscal_number.Size = new Size(103, 20);
             lb_fiscal_number.TabIndex = 44;
@@ -878,41 +873,25 @@
             // lb_employee_id
             // 
             lb_employee_id.AutoSize = true;
-            lb_employee_id.Location = new Point(67, 70);
+            lb_employee_id.Location = new Point(53, 282);
             lb_employee_id.Name = "lb_employee_id";
             lb_employee_id.Size = new Size(94, 20);
             lb_employee_id.TabIndex = 43;
             lb_employee_id.Text = "Employee ID";
             // 
-            // lb_accommodation_ID
-            // 
-            lb_accommodation_ID.AutoSize = true;
-            lb_accommodation_ID.Location = new Point(22, 41);
-            lb_accommodation_ID.Name = "lb_accommodation_ID";
-            lb_accommodation_ID.Size = new Size(139, 20);
-            lb_accommodation_ID.TabIndex = 42;
-            lb_accommodation_ID.Text = "Accommodation ID";
-            // 
             // tb_fiscal_number_reservation
             // 
-            tb_fiscal_number_reservation.Location = new Point(167, 100);
+            tb_fiscal_number_reservation.Location = new Point(153, 312);
             tb_fiscal_number_reservation.Name = "tb_fiscal_number_reservation";
             tb_fiscal_number_reservation.Size = new Size(193, 27);
             tb_fiscal_number_reservation.TabIndex = 40;
             // 
             // tb_employee_id_reservation
             // 
-            tb_employee_id_reservation.Location = new Point(167, 67);
+            tb_employee_id_reservation.Location = new Point(153, 279);
             tb_employee_id_reservation.Name = "tb_employee_id_reservation";
             tb_employee_id_reservation.Size = new Size(193, 27);
             tb_employee_id_reservation.TabIndex = 39;
-            // 
-            // tb_accomodation_ID_reservation
-            // 
-            tb_accomodation_ID_reservation.Location = new Point(167, 34);
-            tb_accomodation_ID_reservation.Name = "tb_accomodation_ID_reservation";
-            tb_accomodation_ID_reservation.Size = new Size(193, 27);
-            tb_accomodation_ID_reservation.TabIndex = 38;
             // 
             // monthCalendar1
             // 
@@ -920,7 +899,6 @@
             monthCalendar1.MaxSelectionCount = 31;
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 0;
-            monthCalendar1.DateSelected += monthCalendar1_DateSelected;
             // 
             // Form1
             // 
@@ -933,7 +911,6 @@
             tp_room.ResumeLayout(false);
             tp_room.PerformLayout();
             design.ResumeLayout(false);
-            who.ResumeLayout(false);
             tp_client.ResumeLayout(false);
             tp_client.PerformLayout();
             tp_employee.ResumeLayout(false);
@@ -950,7 +927,6 @@
         private TabControl design;
         private TabPage tp_client;
         private TextBox tb_age_add_client;
-        private TabPage who;
         private TextBox tb_name_add_client;
         private TextBox tb_sex_add_client;
         private TextBox tb_fiscal_number_add_client;
@@ -966,7 +942,6 @@
         private Button Remove_client_button;
         private TextBox tb_fiscal_number_remove_client;
         private TabPage tp_employee;
-        private Button Client;
         private Button Remove_employee_button;
         private TextBox tb_employee_id_remove_employee;
         private Label lb_employee_remove;
@@ -1019,10 +994,8 @@
         private MonthCalendar monthCalendar1;
         private Label lb_fiscal_number;
         private Label lb_employee_id;
-        private Label lb_accommodation_ID;
         private TextBox tb_fiscal_number_reservation;
         private TextBox tb_employee_id_reservation;
-        private TextBox tb_accomodation_ID_reservation;
         private Button remove_reservation_button;
         private TextBox tb_reservation_remove;
         private Label label17;
@@ -1030,5 +1003,7 @@
         private TextBox tb_reservation_search;
         private Label label24;
         private Button add_reservation_button;
+        private ListBox lbx_Reservations;
+        private Button bt_search_dates;
     }
 }

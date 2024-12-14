@@ -5,6 +5,7 @@ namespace Trabalho_Alojamento_POO
     public partial class Form1 : Form
     {
         public Administrative myCompany;
+        public List<int> accomodationID_listbox = new List<int>();
         public Form1()
         {
             InitializeComponent();
@@ -14,6 +15,7 @@ namespace Trabalho_Alojamento_POO
             this.myCompany.Load_data("Villas.json", 3);
             this.myCompany.Load_data("Rooms.json", 4);
             this.myCompany.Load_data("Reservations.json", 5);
+
         }
         #region clients
         private void Add_button_Click(object sender, EventArgs e)
@@ -140,7 +142,10 @@ namespace Trabalho_Alojamento_POO
         }
         #endregion
 
+        public bool Is_date_available(DateTime StartDate1, DateTime EndDate1, DateTime StartDate2, DateTime EndDate2) {
 
+            return EndDate1 < StartDate2 || EndDate2 < StartDate1;
+        }
 
         private void Add_villa_button_Click(object sender, EventArgs e)
         {
@@ -179,23 +184,66 @@ namespace Trabalho_Alojamento_POO
             }
         }
 
-        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        private bool IsAccommodationAvailable(int accommodationId, DateTime startDate, DateTime endDate)
         {
-
+            // Loop through the reservation list and check for conflicts
+            foreach (var reservation in this.myCompany.reservation_list)
+            {
+                if (reservation.accommodation_id == accommodationId)
+                {
+                    // Check if the dates overlap
+                    if (!(endDate < reservation.begining_date || startDate > reservation.ending_date))
+                    {
+                        return false; // Overlap found, not available
+                    }
+                }
+            }
+            return true; // No conflicts, available
         }
 
+        private void ShowAvailableAccomodations()
+        {
+            DateTime selectedStartDate = monthCalendar1.SelectionStart;
+            DateTime selectedEndDate = monthCalendar1.SelectionEnd;
+
+            // Clear the ListBox first
+            this.lbx_Reservations.Items.Clear();
+            this.accomodationID_listbox.Clear();
+
+            // Add Rooms to the ListBox
+            foreach (var room in this.myCompany.room_list)
+            {
+                if (IsAccommodationAvailable(room.Id, selectedStartDate, selectedEndDate))
+                {
+                    this.lbx_Reservations.Items.Add($"Room ID: {room.Id}, Capacity: {room.capacity}, Area: {room.area}m², Floor: {room.floor}");
+                    this.accomodationID_listbox.Add(room.Id);
+                }
+            }
+
+            // Add Villas to the ListBox
+            foreach (var villa in this.myCompany.villa_list)
+            {
+                if (IsAccommodationAvailable(villa.Id, selectedStartDate, selectedEndDate))
+                {
+                    this.lbx_Reservations.Items.Add($"Villa ID: {villa.Id}, Capacity: {villa.capacity}, Area: {villa.area}m², Kitchen: {villa.kitchen}, Sofa Bed: {villa.sofa_bed}, Living Room: {villa.living_room}");
+                    this.accomodationID_listbox.Add(villa.Id);
+                }
+            }
+        }
 
         private void add_reservation_button_Click(object sender, EventArgs e)
         {
             try
             {
-
+                int accomodationId = this.accomodationID_listbox[this.lbx_Reservations.SelectedIndex];
                 if (this.myCompany.client_list.Find(client => client.Fiscal_number() == Convert.ToInt64(this.tb_fiscal_number_reservation.Text)) == null) MessageBox.Show("No client with that fiscal number");
                 else if (this.myCompany.employee_list.Find(employee => employee.Employee_id == Convert.ToInt32(this.tb_employee_id_reservation.Text)) == null) MessageBox.Show("No employee with that id");
-                else if (this.myCompany.room_list.Find(room => room.Id == Convert.ToInt32(this.tb_accomodation_ID_reservation.Text)) == null
-                    && this.myCompany.villa_list.Find(villa => villa.Id == Convert.ToInt32(this.tb_accomodation_ID_reservation.Text)) == null) MessageBox.Show("No accomodation with that id");
-                else { 
-                    Reservations reservation = new Reservations(monthCalendar1.SelectionStart, monthCalendar1.SelectionEnd, Convert.ToInt32(this.tb_accomodation_ID_reservation.Text), this.myCompany.reservation_list.Count +1, Convert.ToInt32(this.tb_employee_id_reservation.Text), Convert.ToInt64(this.tb_fiscal_number_reservation.Text));
+                else if (this.myCompany.room_list.Find(room => room.Id == accomodationId) == null
+                    && this.myCompany.villa_list.Find(villa => villa.Id == accomodationId) == null) MessageBox.Show("No accomodation with that id");
+                else
+                {
+                    
+                    Reservations reservation = new Reservations(monthCalendar1.SelectionStart, monthCalendar1.SelectionEnd, accomodationId, this.myCompany.reservation_list.Count + 1, Convert.ToInt32(this.tb_employee_id_reservation.Text), Convert.ToInt64(this.tb_fiscal_number_reservation.Text));
                     this.myCompany.Add_reservation(reservation);
                 }
             }
@@ -203,6 +251,15 @@ namespace Trabalho_Alojamento_POO
             {
                 MessageBox.Show("Please insert valid information");
             }
+        }
+
+        private void bt_search_dates_Click(object sender, EventArgs e)
+        {
+            ShowAvailableAccomodations();
+        }
+
+        private void lbx_Reservations_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }
