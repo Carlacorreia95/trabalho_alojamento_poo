@@ -44,13 +44,13 @@ namespace Trabalho_Alojamento_POO
                         });
                         break;
                     case 3://Villa
-                        updatedJson = JsonSerializer.Serialize(client_list, new JsonSerializerOptions
+                        updatedJson = JsonSerializer.Serialize(villa_list, new JsonSerializerOptions
                         {
                             WriteIndented = true
                         });
                         break;
                     case 4://Room
-                        updatedJson = JsonSerializer.Serialize(client_list, new JsonSerializerOptions
+                        updatedJson = JsonSerializer.Serialize(room_list, new JsonSerializerOptions
                         {
                             WriteIndented = true
                         });
@@ -201,15 +201,19 @@ namespace Trabalho_Alojamento_POO
         }
         public void Remove_rooms(int id) 
         { 
-            this.room_list.RemoveAll(room => room.Id()== id);
+            this.room_list.RemoveAll(room => room.Id== id);
             Update_json("Rooms.json", 4);
         }
         public void Search_rooms(int id)
         {
-            var room = this.room_list.Find(room => room.Id() == id);
+            var room = this.room_list.Find(room => room.Id == id);
             if (room != null)
             {
-                //MessageBox.Show("Res:"+ reservation_searc);
+                MessageBox.Show("ID:" + room.Id + "\nCapacity:" + room.capacity);
+            }
+            else {
+                MessageBox.Show("No Room with that ID");
+
             }
         }
 
@@ -218,23 +222,28 @@ namespace Trabalho_Alojamento_POO
         #region Villa
         private List<Villa> villa_list = new List<Villa>();
 
-        public void Add_villas(Villa villa)
+        public void Add_villa(Villa villa)
         {
             this.villa_list.Add(villa);
             // Write the updated data back to the file
             Update_json("Villas.json", 3);
         }
-        public void Remove_villas(int id)
+        public void Remove_villa(int id)
         {
-            this.villa_list.RemoveAll(villa => villa.Id() == id);
+            this.villa_list.RemoveAll(villa => villa.Id == id);
             Update_json("Villas.json", 3);
         }
-        public void Search_villas(int id)
+        public void Search_villa(int id)
         {
-            var villa = this.villa_list.Find(villa => villa.Id() == id);
+            var villa = this.villa_list.Find(villa => villa.Id == id);
             if (villa != null)
             {
-                //MessageBox.Show("Res:"+ reservation_searc);
+                MessageBox.Show("ID:" + villa.Id + "\nCapacity:" + villa.capacity);
+            }
+            else
+            {
+                MessageBox.Show("No Villa with that ID");
+
             }
         }
 

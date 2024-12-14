@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             TabPage tp_room;
-            Remove_accomodation_button = new Button();
-            textBox7 = new TextBox();
+            Remove_room_button = new Button();
+            tb_remove_add_room = new TextBox();
             label7 = new Label();
-            Search_accomodation_button = new Button();
-            textBox8 = new TextBox();
+            Search_room_button = new Button();
+            tb_id_search_room = new TextBox();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
             Add_room_button = new Button();
-            textBox9 = new TextBox();
-            textBox10 = new TextBox();
-            textBox11 = new TextBox();
-            tb_age_add_accomodation = new TextBox();
+            tb_floor_add_room = new TextBox();
+            tb_area_add_room = new TextBox();
+            tb_capacity_add_room = new TextBox();
+            tb_id_add_room = new TextBox();
             design = new TabControl();
             who = new TabPage();
             Client = new Button();
@@ -84,31 +84,54 @@
             tb_name_add_employee = new TextBox();
             tb_age_add_employee = new TextBox();
             tp_villa = new TabPage();
+            cb_living_room = new CheckBox();
+            cb_sofa_bed = new CheckBox();
+            cb_kitchen = new CheckBox();
+            label23 = new Label();
+            label22 = new Label();
+            label21 = new Label();
+            Remove_villa_button = new Button();
+            tb_id_remove_villa = new TextBox();
+            label15 = new Label();
+            Search_villa_button = new Button();
+            tb_id_search_villa = new TextBox();
+            label16 = new Label();
+            label18 = new Label();
+            label19 = new Label();
+            label20 = new Label();
+            Add_villa_button = new Button();
+            tb_area_add_villa = new TextBox();
+            tb_capacity_add_villa = new TextBox();
+            tb_id_add_villa = new TextBox();
+            Reservations = new TabPage();
+            monthCalendar1 = new MonthCalendar();
             tp_room = new TabPage();
             tp_room.SuspendLayout();
             design.SuspendLayout();
             who.SuspendLayout();
             tp_client.SuspendLayout();
             tp_employee.SuspendLayout();
+            tp_villa.SuspendLayout();
+            Reservations.SuspendLayout();
             SuspendLayout();
             // 
             // tp_room
             // 
-            tp_room.Controls.Add(Remove_accomodation_button);
-            tp_room.Controls.Add(textBox7);
+            tp_room.Controls.Add(Remove_room_button);
+            tp_room.Controls.Add(tb_remove_add_room);
             tp_room.Controls.Add(label7);
-            tp_room.Controls.Add(Search_accomodation_button);
-            tp_room.Controls.Add(textBox8);
+            tp_room.Controls.Add(Search_room_button);
+            tp_room.Controls.Add(tb_id_search_room);
             tp_room.Controls.Add(label8);
             tp_room.Controls.Add(label9);
             tp_room.Controls.Add(label10);
             tp_room.Controls.Add(label11);
             tp_room.Controls.Add(label12);
             tp_room.Controls.Add(Add_room_button);
-            tp_room.Controls.Add(textBox9);
-            tp_room.Controls.Add(textBox10);
-            tp_room.Controls.Add(textBox11);
-            tp_room.Controls.Add(tb_age_add_accomodation);
+            tp_room.Controls.Add(tb_floor_add_room);
+            tp_room.Controls.Add(tb_area_add_room);
+            tp_room.Controls.Add(tb_capacity_add_room);
+            tp_room.Controls.Add(tb_id_add_room);
             tp_room.Location = new Point(4, 29);
             tp_room.Name = "tp_room";
             tp_room.Size = new Size(768, 393);
@@ -116,69 +139,71 @@
             tp_room.Text = "Room_management";
             tp_room.UseVisualStyleBackColor = true;
             // 
-            // Remove_accomodation_button
+            // Remove_room_button
             // 
-            Remove_accomodation_button.Location = new Point(428, 275);
-            Remove_accomodation_button.Name = "Remove_accomodation_button";
-            Remove_accomodation_button.Size = new Size(94, 29);
-            Remove_accomodation_button.TabIndex = 44;
-            Remove_accomodation_button.Text = "Remove";
-            Remove_accomodation_button.UseVisualStyleBackColor = true;
+            Remove_room_button.Location = new Point(428, 275);
+            Remove_room_button.Name = "Remove_room_button";
+            Remove_room_button.Size = new Size(94, 29);
+            Remove_room_button.TabIndex = 44;
+            Remove_room_button.Text = "Remove";
+            Remove_room_button.UseVisualStyleBackColor = true;
+            Remove_room_button.Click += Remove_room_button_Click;
             // 
-            // textBox7
+            // tb_remove_add_room
             // 
-            textBox7.Location = new Point(207, 277);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(193, 27);
-            textBox7.TabIndex = 43;
+            tb_remove_add_room.Location = new Point(207, 277);
+            tb_remove_add_room.Name = "tb_remove_add_room";
+            tb_remove_add_room.Size = new Size(193, 27);
+            tb_remove_add_room.TabIndex = 43;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(85, 284);
+            label7.Location = new Point(176, 280);
             label7.Name = "label7";
-            label7.Size = new Size(103, 20);
+            label7.Size = new Size(22, 20);
             label7.TabIndex = 42;
-            label7.Text = "Fiscal Number";
+            label7.Text = "Id";
             // 
-            // Search_accomodation_button
+            // Search_room_button
             // 
-            Search_accomodation_button.Location = new Point(428, 211);
-            Search_accomodation_button.Name = "Search_accomodation_button";
-            Search_accomodation_button.Size = new Size(94, 29);
-            Search_accomodation_button.TabIndex = 41;
-            Search_accomodation_button.Text = "Search";
-            Search_accomodation_button.UseVisualStyleBackColor = true;
+            Search_room_button.Location = new Point(428, 211);
+            Search_room_button.Name = "Search_room_button";
+            Search_room_button.Size = new Size(94, 29);
+            Search_room_button.TabIndex = 41;
+            Search_room_button.Text = "Search";
+            Search_room_button.UseVisualStyleBackColor = true;
+            Search_room_button.Click += Search_room_button_Click;
             // 
-            // textBox8
+            // tb_id_search_room
             // 
-            textBox8.Location = new Point(207, 211);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(193, 27);
-            textBox8.TabIndex = 40;
+            tb_id_search_room.Location = new Point(207, 211);
+            tb_id_search_room.Name = "tb_id_search_room";
+            tb_id_search_room.Size = new Size(193, 27);
+            tb_id_search_room.TabIndex = 40;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(85, 214);
+            label8.Location = new Point(176, 210);
             label8.Name = "label8";
-            label8.Size = new Size(103, 20);
+            label8.Size = new Size(22, 20);
             label8.TabIndex = 39;
-            label8.Text = "Fiscal Number";
+            label8.Text = "Id";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(132, 144);
+            label9.Location = new Point(155, 144);
             label9.Name = "label9";
-            label9.Size = new Size(40, 20);
+            label9.Size = new Size(43, 20);
             label9.TabIndex = 38;
-            label9.Text = "Type";
+            label9.Text = "Floor";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(132, 115);
+            label10.Location = new Point(158, 115);
             label10.Name = "label10";
             label10.Size = new Size(40, 20);
             label10.TabIndex = 37;
@@ -196,7 +221,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(132, 49);
+            label12.Location = new Point(176, 49);
             label12.Name = "label12";
             label12.Size = new Size(22, 20);
             label12.TabIndex = 35;
@@ -210,34 +235,35 @@
             Add_room_button.TabIndex = 34;
             Add_room_button.Text = "Add";
             Add_room_button.UseVisualStyleBackColor = true;
+            Add_room_button.Click += Add_room_button_Click;
             // 
-            // textBox9
+            // tb_floor_add_room
             // 
-            textBox9.Location = new Point(207, 141);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(193, 27);
-            textBox9.TabIndex = 33;
+            tb_floor_add_room.Location = new Point(207, 141);
+            tb_floor_add_room.Name = "tb_floor_add_room";
+            tb_floor_add_room.Size = new Size(193, 27);
+            tb_floor_add_room.TabIndex = 33;
             // 
-            // textBox10
+            // tb_area_add_room
             // 
-            textBox10.Location = new Point(207, 108);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(193, 27);
-            textBox10.TabIndex = 32;
+            tb_area_add_room.Location = new Point(207, 108);
+            tb_area_add_room.Name = "tb_area_add_room";
+            tb_area_add_room.Size = new Size(193, 27);
+            tb_area_add_room.TabIndex = 32;
             // 
-            // textBox11
+            // tb_capacity_add_room
             // 
-            textBox11.Location = new Point(207, 75);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(193, 27);
-            textBox11.TabIndex = 31;
+            tb_capacity_add_room.Location = new Point(207, 75);
+            tb_capacity_add_room.Name = "tb_capacity_add_room";
+            tb_capacity_add_room.Size = new Size(193, 27);
+            tb_capacity_add_room.TabIndex = 31;
             // 
-            // tb_age_add_accomodation
+            // tb_id_add_room
             // 
-            tb_age_add_accomodation.Location = new Point(207, 42);
-            tb_age_add_accomodation.Name = "tb_age_add_accomodation";
-            tb_age_add_accomodation.Size = new Size(193, 27);
-            tb_age_add_accomodation.TabIndex = 30;
+            tb_id_add_room.Location = new Point(207, 42);
+            tb_id_add_room.Name = "tb_id_add_room";
+            tb_id_add_room.Size = new Size(193, 27);
+            tb_id_add_room.TabIndex = 30;
             // 
             // design
             // 
@@ -246,6 +272,7 @@
             design.Controls.Add(tp_employee);
             design.Controls.Add(tp_room);
             design.Controls.Add(tp_villa);
+            design.Controls.Add(Reservations);
             design.Location = new Point(12, 12);
             design.Name = "design";
             design.SelectedIndex = 0;
@@ -265,7 +292,7 @@
             // 
             // Client
             // 
-            Client.Location = new Point(265, 58);
+            Client.Location = new Point(219, 112);
             Client.Name = "Client";
             Client.Size = new Size(94, 29);
             Client.TabIndex = 0;
@@ -343,7 +370,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(31, 193);
+            label5.Location = new Point(31, 197);
             label5.Name = "label5";
             label5.Size = new Size(103, 20);
             label5.TabIndex = 9;
@@ -352,7 +379,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(31, 120);
+            label4.Location = new Point(31, 127);
             label4.Name = "label4";
             label4.Size = new Size(103, 20);
             label4.TabIndex = 8;
@@ -361,7 +388,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(78, 94);
+            label3.Location = new Point(104, 94);
             label3.Name = "label3";
             label3.Size = new Size(30, 20);
             label3.TabIndex = 7;
@@ -370,7 +397,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(78, 61);
+            label2.Location = new Point(88, 61);
             label2.Name = "label2";
             label2.Size = new Size(46, 20);
             label2.TabIndex = 6;
@@ -379,7 +406,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(78, 28);
+            label1.Location = new Point(100, 28);
             label1.Name = "label1";
             label1.Size = new Size(34, 20);
             label1.TabIndex = 5;
@@ -566,7 +593,7 @@
             // lb_employee_age_add
             // 
             lb_employee_age_add.AutoSize = true;
-            lb_employee_age_add.Location = new Point(109, 37);
+            lb_employee_age_add.Location = new Point(122, 37);
             lb_employee_age_add.Name = "lb_employee_age_add";
             lb_employee_age_add.Size = new Size(34, 20);
             lb_employee_age_add.TabIndex = 20;
@@ -612,12 +639,214 @@
             // 
             // tp_villa
             // 
+            tp_villa.Controls.Add(cb_living_room);
+            tp_villa.Controls.Add(cb_sofa_bed);
+            tp_villa.Controls.Add(cb_kitchen);
+            tp_villa.Controls.Add(label23);
+            tp_villa.Controls.Add(label22);
+            tp_villa.Controls.Add(label21);
+            tp_villa.Controls.Add(Remove_villa_button);
+            tp_villa.Controls.Add(tb_id_remove_villa);
+            tp_villa.Controls.Add(label15);
+            tp_villa.Controls.Add(Search_villa_button);
+            tp_villa.Controls.Add(tb_id_search_villa);
+            tp_villa.Controls.Add(label16);
+            tp_villa.Controls.Add(label18);
+            tp_villa.Controls.Add(label19);
+            tp_villa.Controls.Add(label20);
+            tp_villa.Controls.Add(Add_villa_button);
+            tp_villa.Controls.Add(tb_area_add_villa);
+            tp_villa.Controls.Add(tb_capacity_add_villa);
+            tp_villa.Controls.Add(tb_id_add_villa);
             tp_villa.Location = new Point(4, 29);
             tp_villa.Name = "tp_villa";
             tp_villa.Size = new Size(768, 393);
             tp_villa.TabIndex = 4;
             tp_villa.Text = "villa_management";
             tp_villa.UseVisualStyleBackColor = true;
+            // 
+            // cb_living_room
+            // 
+            cb_living_room.AutoSize = true;
+            cb_living_room.Location = new Point(214, 196);
+            cb_living_room.Name = "cb_living_room";
+            cb_living_room.Size = new Size(18, 17);
+            cb_living_room.TabIndex = 68;
+            cb_living_room.UseVisualStyleBackColor = true;
+            // 
+            // cb_sofa_bed
+            // 
+            cb_sofa_bed.AutoSize = true;
+            cb_sofa_bed.Location = new Point(214, 163);
+            cb_sofa_bed.Name = "cb_sofa_bed";
+            cb_sofa_bed.Size = new Size(18, 17);
+            cb_sofa_bed.TabIndex = 67;
+            cb_sofa_bed.UseVisualStyleBackColor = true;
+            // 
+            // cb_kitchen
+            // 
+            cb_kitchen.AutoSize = true;
+            cb_kitchen.Location = new Point(214, 130);
+            cb_kitchen.Name = "cb_kitchen";
+            cb_kitchen.Size = new Size(18, 17);
+            cb_kitchen.TabIndex = 66;
+            cb_kitchen.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(113, 196);
+            label23.Name = "label23";
+            label23.Size = new Size(92, 20);
+            label23.TabIndex = 65;
+            label23.Text = "Living Room";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(136, 160);
+            label22.Name = "label22";
+            label22.Size = new Size(69, 20);
+            label22.TabIndex = 63;
+            label22.Text = "Sofa Bed";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(147, 130);
+            label21.Name = "label21";
+            label21.Size = new Size(58, 20);
+            label21.TabIndex = 61;
+            label21.Text = "Kitchen";
+            // 
+            // Remove_villa_button
+            // 
+            Remove_villa_button.Location = new Point(435, 342);
+            Remove_villa_button.Name = "Remove_villa_button";
+            Remove_villa_button.Size = new Size(94, 29);
+            Remove_villa_button.TabIndex = 59;
+            Remove_villa_button.Text = "Remove";
+            Remove_villa_button.UseVisualStyleBackColor = true;
+            Remove_villa_button.Click += Remove_villa_button_Click;
+            // 
+            // tb_id_remove_villa
+            // 
+            tb_id_remove_villa.Location = new Point(214, 344);
+            tb_id_remove_villa.Name = "tb_id_remove_villa";
+            tb_id_remove_villa.Size = new Size(193, 27);
+            tb_id_remove_villa.TabIndex = 58;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(183, 347);
+            label15.Name = "label15";
+            label15.Size = new Size(22, 20);
+            label15.TabIndex = 57;
+            label15.Text = "Id";
+            // 
+            // Search_villa_button
+            // 
+            Search_villa_button.Location = new Point(435, 300);
+            Search_villa_button.Name = "Search_villa_button";
+            Search_villa_button.Size = new Size(94, 29);
+            Search_villa_button.TabIndex = 56;
+            Search_villa_button.Text = "Search";
+            Search_villa_button.UseVisualStyleBackColor = true;
+            Search_villa_button.Click += Search_villa_button_Click;
+            // 
+            // tb_id_search_villa
+            // 
+            tb_id_search_villa.Location = new Point(214, 300);
+            tb_id_search_villa.Name = "tb_id_search_villa";
+            tb_id_search_villa.Size = new Size(193, 27);
+            tb_id_search_villa.TabIndex = 55;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(183, 299);
+            label16.Name = "label16";
+            label16.Size = new Size(22, 20);
+            label16.TabIndex = 54;
+            label16.Text = "Id";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(165, 101);
+            label18.Name = "label18";
+            label18.Size = new Size(40, 20);
+            label18.TabIndex = 52;
+            label18.Text = "Area";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(139, 68);
+            label19.Name = "label19";
+            label19.Size = new Size(66, 20);
+            label19.TabIndex = 51;
+            label19.Text = "Capacity";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(183, 35);
+            label20.Name = "label20";
+            label20.Size = new Size(22, 20);
+            label20.TabIndex = 50;
+            label20.Text = "Id";
+            // 
+            // Add_villa_button
+            // 
+            Add_villa_button.Location = new Point(435, 196);
+            Add_villa_button.Name = "Add_villa_button";
+            Add_villa_button.Size = new Size(94, 29);
+            Add_villa_button.TabIndex = 49;
+            Add_villa_button.Text = "Add";
+            Add_villa_button.UseVisualStyleBackColor = true;
+            Add_villa_button.Click += Add_villa_button_Click;
+            // 
+            // tb_area_add_villa
+            // 
+            tb_area_add_villa.Location = new Point(214, 94);
+            tb_area_add_villa.Name = "tb_area_add_villa";
+            tb_area_add_villa.Size = new Size(193, 27);
+            tb_area_add_villa.TabIndex = 47;
+            // 
+            // tb_capacity_add_villa
+            // 
+            tb_capacity_add_villa.Location = new Point(214, 61);
+            tb_capacity_add_villa.Name = "tb_capacity_add_villa";
+            tb_capacity_add_villa.Size = new Size(193, 27);
+            tb_capacity_add_villa.TabIndex = 46;
+            // 
+            // tb_id_add_villa
+            // 
+            tb_id_add_villa.Location = new Point(214, 28);
+            tb_id_add_villa.Name = "tb_id_add_villa";
+            tb_id_add_villa.Size = new Size(193, 27);
+            tb_id_add_villa.TabIndex = 45;
+            // 
+            // Reservations
+            // 
+            Reservations.Controls.Add(monthCalendar1);
+            Reservations.Location = new Point(4, 29);
+            Reservations.Name = "Reservations";
+            Reservations.Padding = new Padding(3);
+            Reservations.Size = new Size(768, 393);
+            Reservations.TabIndex = 5;
+            Reservations.Text = "Reservations";
+            Reservations.UseVisualStyleBackColor = true;
+            // 
+            // monthCalendar1
+            // 
+            monthCalendar1.Location = new Point(9, 32);
+            monthCalendar1.MaxSelectionCount = 31;
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 0;
+            monthCalendar1.DateSelected += monthCalendar1_DateSelected;
             // 
             // Form1
             // 
@@ -635,6 +864,9 @@
             tp_client.PerformLayout();
             tp_employee.ResumeLayout(false);
             tp_employee.PerformLayout();
+            tp_villa.ResumeLayout(false);
+            tp_villa.PerformLayout();
+            Reservations.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -675,25 +907,46 @@
         private TextBox tb_sex_add_employee;
         private TextBox tb_name_add_employee;
         private TextBox tb_age_add_employee;
-        private Button Remove_accomodation_button;
-        private TextBox textBox7;
+        private Button Remove_room_button;
+        private TextBox tb_remove_add_room;
         private Label label7;
-        private Button Search_accomodation_button;
-        private TextBox textBox8;
+        private Button Search_room_button;
+        private TextBox tb_id_search_room;
         private Label label8;
         private Label label9;
         private Label label10;
         private Label label11;
         private Label label12;
         private Button Add_room_button;
-        private TextBox textBox9;
-        private TextBox textBox10;
-        private TextBox textBox11;
-        private TextBox tb_age_add_accomodation;
+        private TextBox tb_floor_add_room;
+        private TextBox tb_area_add_room;
+        private TextBox tb_capacity_add_room;
+        private TextBox tb_id_add_room;
         private Label label13;
         private TextBox tb_position_add_employee;
         private Label label14;
         private TextBox tb_section_add_employee;
         private TabPage tp_villa;
+        private Label label23;
+        private Label label22;
+        private Label label21;
+        private Button Remove_villa_button;
+        private TextBox tb_id_remove_villa;
+        private Label label15;
+        private Button Search_villa_button;
+        private TextBox tb_id_search_villa;
+        private Label label16;
+        private Label label18;
+        private Label label19;
+        private Label label20;
+        private Button Add_villa_button;
+        private TextBox tb_area_add_villa;
+        private TextBox tb_capacity_add_villa;
+        private TextBox tb_id_add_villa;
+        private CheckBox cb_living_room;
+        private CheckBox cb_sofa_bed;
+        private CheckBox cb_kitchen;
+        private TabPage Reservations;
+        private MonthCalendar monthCalendar1;
     }
 }

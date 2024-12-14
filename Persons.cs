@@ -41,12 +41,11 @@ namespace Trabalho_Alojamento_POO
     #region Employee
         public class Employee : Person
     {
-        private string position;
-        private string section;
-        private int employee_id;
+        public string position { get; set; }
+        public string section { get; set; }
+        private int employee_id { get; set; }
 
         public int Employee_id { get => employee_id; }
-
         public Employee(int age, string name, string sex, int employee_id, string position, string section) : base(age, name, sex)
         {
             this.position = position;

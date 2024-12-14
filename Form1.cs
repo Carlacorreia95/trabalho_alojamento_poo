@@ -9,8 +9,8 @@ namespace Trabalho_Alojamento_POO
             this.myCompany = new Administrative();
             this.myCompany.Load_data("Clients.json", 1);
             this.myCompany.Load_data("Employees.json", 2);
-            this.myCompany.Load_data("Rooms.json", 3);
-            this.myCompany.Load_data("Villas.json", 4);
+            this.myCompany.Load_data("Villas.json", 3);
+            this.myCompany.Load_data("Rooms.json", 4);
             this.myCompany.Load_data("Reservations.json", 5);
         }
         #region clients
@@ -53,6 +53,7 @@ namespace Trabalho_Alojamento_POO
             }
         }
         #endregion
+
         #region employees
         private void Add_employee_button_Click(object sender, EventArgs e)
         {
@@ -67,7 +68,6 @@ namespace Trabalho_Alojamento_POO
             }
 
         }
-        #endregion
 
         private void Search_employee_button_Click(object sender, EventArgs e)
         {
@@ -88,7 +88,7 @@ namespace Trabalho_Alojamento_POO
 
             try
             {
-                this.myCompany.Remove_client(Convert.ToInt32(this.tb_employee_id_remove_employee));
+                this.myCompany.Remove_employee(Convert.ToInt32(this.tb_employee_id_remove_employee));
             }
             catch (Exception ex)
             {
@@ -96,6 +96,94 @@ namespace Trabalho_Alojamento_POO
             }
         }
 
+        #endregion
 
+        #region room
+        private void Add_room_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Room room = new Room(Convert.ToInt32(this.tb_id_add_room.Text), Convert.ToInt32(this.tb_capacity_add_room.Text), float.Parse(this.tb_area_add_room.Text), Convert.ToInt32(this.tb_floor_add_room.Text));
+                this.myCompany.Add_rooms(room);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please insert valid information");
+            }
+        }
+        private void Search_room_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.myCompany.Search_rooms(Convert.ToInt32(this.tb_id_search_room.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please insert a valid ID");
+            }
+
+        }
+
+        private void Remove_room_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.myCompany.Remove_rooms(Convert.ToInt32(this.tb_remove_add_room.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please insert a valid ID");
+            }
+        }
+        #endregion
+
+
+
+        private void Add_villa_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Villa villa = new Villa(Convert.ToInt32(this.tb_id_add_villa.Text), Convert.ToInt32(this.tb_capacity_add_villa.Text), float.Parse(this.tb_area_add_villa.Text), this.cb_kitchen.Checked, this.cb_sofa_bed.Checked, this.cb_living_room.Checked);
+                this.myCompany.Add_villa(villa);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please insert valid information");
+            }
+        }
+
+        private void Search_villa_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.myCompany.Search_villa(Convert.ToInt32(this.tb_id_search_villa.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please insert a valid ID");
+            }
+        }
+
+        private void Remove_villa_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.myCompany.Remove_villa(Convert.ToInt32(this.tb_id_remove_villa.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please insert a valid ID");
+            }
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
