@@ -137,7 +137,7 @@ namespace Trabalho_Alojamento_POO
         #endregion
 
         #region Clients file management  
-        private List<Client> client_list = new List<Client>();
+        public List<Client> client_list = new List<Client>();
         public void Add_client(Client client)
         {
             this.client_list.Add(client);
@@ -164,7 +164,7 @@ namespace Trabalho_Alojamento_POO
         #endregion
 
         #region Employee file management
-        private List<Employee> employee_list = new List<Employee>();
+        public List<Employee> employee_list = new List<Employee>();
         public void Add_employee(Employee employee)
         {
             this.employee_list.Add(employee);
@@ -190,8 +190,18 @@ namespace Trabalho_Alojamento_POO
         #endregion
 
         #region Accommodation file management
+        public int GetNextId()
+        {
+            // Find the highest ID in rooms and villas
+            int maxRoomId = room_list.Any() ? room_list.Max(r => r.Id) : 0;
+            int maxVillaId = villa_list.Any() ? villa_list.Max(v => v.Id) : 0;
+
+            // The next ID is the max of both + 1
+            return Math.Max(maxRoomId, maxVillaId) + 1;
+        }
+
         #region Room
-        private List<Room> room_list = new List<Room>();
+        public List<Room> room_list = new List<Room>();
 
         public void Add_rooms(Room room)
         {
@@ -220,7 +230,7 @@ namespace Trabalho_Alojamento_POO
         #endregion
 
         #region Villa
-        private List<Villa> villa_list = new List<Villa>();
+        public List<Villa> villa_list = new List<Villa>();
 
         public void Add_villa(Villa villa)
         {
@@ -252,7 +262,7 @@ namespace Trabalho_Alojamento_POO
 
 
         #region Reservation file management
-        private List<Reservations> reservation_list = new List<Reservations>();
+        public List<Reservations> reservation_list = new List<Reservations>();
         public void Add_reservation(Reservations reservation)
         {
             this.reservation_list.Add(reservation);

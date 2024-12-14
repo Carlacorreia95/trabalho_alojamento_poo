@@ -9,12 +9,12 @@ namespace Trabalho_Alojamento_POO
 {
     public class Reservations
     {
-        private DateTime begining_date;
-        private DateTime ending_date;
-        private int accommodation_id;
-        private int reservation_id;
-        private int employee_id;
-        private long fiscal_number;
+        private int reservation_id { get; set; }
+        public DateTime begining_date { get; set; }
+        public DateTime ending_date { get; set; }
+        public int accommodation_id { get; set; }
+        public int employee_id { get; set; }
+        public long fiscal_number { get; set; }
         // private enum operator;
         // private enum operator;
         public int Reservation_id { get => reservation_id; }

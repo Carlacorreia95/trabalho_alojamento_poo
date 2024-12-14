@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Trabalho_Alojamento_POO
 {
     public partial class Form1 : Form
@@ -59,7 +61,8 @@ namespace Trabalho_Alojamento_POO
         {
             try
             {
-                Employee employee = new Employee(Convert.ToInt32(this.tb_age_add_employee.Text), this.tb_name_add_employee.Text, this.tb_sex_add_employee.Text, Convert.ToInt32(this.tb_employee_id_add_employee.Text), this.tb_position_add_employee.Text, this.tb_section_add_employee.Text);
+                int employee_id = this.myCompany.employee_list.Any() ? this.myCompany.employee_list.Last().Employee_id + 1 : 1;
+                Employee employee = new Employee(Convert.ToInt32(this.tb_age_add_employee.Text), this.tb_name_add_employee.Text, this.tb_sex_add_employee.Text, employee_id, this.tb_position_add_employee.Text, this.tb_section_add_employee.Text);
                 this.myCompany.Add_employee(employee);
             }
             catch (Exception ex)
@@ -103,7 +106,7 @@ namespace Trabalho_Alojamento_POO
         {
             try
             {
-                Room room = new Room(Convert.ToInt32(this.tb_id_add_room.Text), Convert.ToInt32(this.tb_capacity_add_room.Text), float.Parse(this.tb_area_add_room.Text), Convert.ToInt32(this.tb_floor_add_room.Text));
+                Room room = new Room(this.myCompany.GetNextId(), Convert.ToInt32(this.tb_capacity_add_room.Text), float.Parse(this.tb_area_add_room.Text), Convert.ToInt32(this.tb_floor_add_room.Text));
                 this.myCompany.Add_rooms(room);
             }
             catch (Exception ex)
@@ -143,7 +146,7 @@ namespace Trabalho_Alojamento_POO
         {
             try
             {
-                Villa villa = new Villa(Convert.ToInt32(this.tb_id_add_villa.Text), Convert.ToInt32(this.tb_capacity_add_villa.Text), float.Parse(this.tb_area_add_villa.Text), this.cb_kitchen.Checked, this.cb_sofa_bed.Checked, this.cb_living_room.Checked);
+                Villa villa = new Villa(this.myCompany.GetNextId(), Convert.ToInt32(this.tb_capacity_add_villa.Text), float.Parse(this.tb_area_add_villa.Text), this.cb_kitchen.Checked, this.cb_sofa_bed.Checked, this.cb_living_room.Checked);
                 this.myCompany.Add_villa(villa);
             }
             catch (Exception ex)
@@ -181,9 +184,25 @@ namespace Trabalho_Alojamento_POO
 
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
 
+        private void add_reservation_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (this.myCompany.client_list.Find(client => client.Fiscal_number() == Convert.ToInt64(this.tb_fiscal_number_reservation.Text)) == null) MessageBox.Show("No client with that fiscal number");
+                else if (this.myCompany.employee_list.Find(employee => employee.Employee_id == Convert.ToInt32(this.tb_employee_id_reservation.Text)) == null) MessageBox.Show("No employee with that id");
+                else if (this.myCompany.room_list.Find(room => room.Id == Convert.ToInt32(this.tb_accomodation_ID_reservation.Text)) == null
+                    && this.myCompany.villa_list.Find(villa => villa.Id == Convert.ToInt32(this.tb_accomodation_ID_reservation.Text)) == null) MessageBox.Show("No accomodation with that id");
+                else { 
+                    Reservations reservation = new Reservations(monthCalendar1.SelectionStart, monthCalendar1.SelectionEnd, Convert.ToInt32(this.tb_accomodation_ID_reservation.Text), this.myCompany.reservation_list.Count +1, Convert.ToInt32(this.tb_employee_id_reservation.Text), Convert.ToInt64(this.tb_fiscal_number_reservation.Text));
+                    this.myCompany.Add_reservation(reservation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please insert valid information");
+            }
         }
     }
 }
