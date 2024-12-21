@@ -15,8 +15,7 @@ namespace Trabalho_Alojamento_POO
         public int accommodation_id { get; set; }
         public int employee_id { get; set; }
         public long fiscal_number { get; set; }
-        // private enum operator;
-        // private enum operator;
+       
         public int Reservation_id { get => reservation_id; }
 
         public Reservations(DateTime begining_date, DateTime ending_date, int accommodation_id, int reservation_id, int employee_id, long fiscal_number)

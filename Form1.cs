@@ -1,14 +1,16 @@
 using System.Collections.Generic;
+using Helper;
 
 namespace Trabalho_Alojamento_POO
 {
     public partial class Form1 : Form
     {
+        public Helper_class day_counter;
         public Administrative myCompany;
         public List<int> accomodationID_listbox = new List<int>();
         public Form1()
         {
-            InitializeComponent();
+            Initialize_component();
             this.myCompany = new Administrative();
             this.myCompany.Load_data("Clients.json", 1);
             this.myCompany.Load_data("Employees.json", 2);
@@ -28,6 +30,7 @@ namespace Trabalho_Alojamento_POO
             }
             catch (Exception ex)
             {
+                Logger.Log_error("Information was invaled", ex);
                 MessageBox.Show("Please insert valid information");
             }
         }
@@ -40,6 +43,7 @@ namespace Trabalho_Alojamento_POO
             }
             catch (Exception ex)
             {
+                Logger.Log_error("Fiscal number was invaled", ex);
                 MessageBox.Show("Please insert valid fiscal number");
             }
         }
@@ -53,12 +57,13 @@ namespace Trabalho_Alojamento_POO
             }
             catch (Exception ex)
             {
+                Logger.Log_error("Fiscal number was invaled", ex);
                 MessageBox.Show("Please insert a valid fiscal number");
             }
         }
         #endregion
 
-        #region employees
+        #region Employees
         private void Add_employee_button_Click(object sender, EventArgs e)
         {
             try
@@ -103,12 +108,14 @@ namespace Trabalho_Alojamento_POO
 
         #endregion
 
+        #region Accomodation 
+        
         #region room
         private void Add_room_button_Click(object sender, EventArgs e)
         {
             try
             {
-                Room room = new Room(this.myCompany.GetNextId(), Convert.ToInt32(this.tb_capacity_add_room.Text), float.Parse(this.tb_area_add_room.Text), Convert.ToInt32(this.tb_floor_add_room.Text));
+                Room room = new Room(this.myCompany.Get_next_id(), Convert.ToInt32(this.tb_capacity_add_room.Text), float.Parse(this.tb_area_add_room.Text), Convert.ToInt32(this.tb_floor_add_room.Text));
                 this.myCompany.Add_rooms(room);
             }
             catch (Exception ex)
@@ -120,7 +127,7 @@ namespace Trabalho_Alojamento_POO
         {
             try
             {
-                this.myCompany.Search_rooms(Convert.ToInt32(this.tb_id_search_room.Text));
+                this.myCompany.Search_room(Convert.ToInt32(this.tb_id_search_room.Text));
             }
             catch (Exception ex)
             {
@@ -142,20 +149,17 @@ namespace Trabalho_Alojamento_POO
         }
         #endregion
 
-        public bool Is_date_available(DateTime StartDate1, DateTime EndDate1, DateTime StartDate2, DateTime EndDate2) {
-
-            return EndDate1 < StartDate2 || EndDate2 < StartDate1;
-        }
-
+        #region villa
         private void Add_villa_button_Click(object sender, EventArgs e)
         {
             try
             {
-                Villa villa = new Villa(this.myCompany.GetNextId(), Convert.ToInt32(this.tb_capacity_add_villa.Text), float.Parse(this.tb_area_add_villa.Text), this.cb_kitchen.Checked, this.cb_sofa_bed.Checked, this.cb_living_room.Checked);
+                Villa villa = new Villa(this.myCompany.Get_next_id(), Convert.ToInt32(this.tb_capacity_add_villa.Text), float.Parse(this.tb_area_add_villa.Text), this.cb_kitchen.Checked, this.cb_sofa_bed.Checked, this.cb_living_room.Checked);
                 this.myCompany.Add_villa(villa);
             }
             catch (Exception ex)
             {
+                Logger.Log_error("Information was invaled", ex);
                 MessageBox.Show("Please insert valid information");
             }
         }
@@ -168,6 +172,7 @@ namespace Trabalho_Alojamento_POO
             }
             catch (Exception ex)
             {
+                Logger.Log_error("ID was invaled", ex);
                 MessageBox.Show("Please insert a valid ID");
             }
         }
@@ -180,11 +185,21 @@ namespace Trabalho_Alojamento_POO
             }
             catch (Exception ex)
             {
+                Logger.Log_error("ID was invaled", ex);
                 MessageBox.Show("Please insert a valid ID");
             }
         }
+        #endregion
+        #endregion
 
-        private bool IsAccommodationAvailable(int accommodationId, DateTime startDate, DateTime endDate)
+        #region Reservation
+        public bool Is_date_available(DateTime StartDate1, DateTime EndDate1, DateTime StartDate2, DateTime EndDate2)
+        {
+
+            return EndDate1 < StartDate2 || EndDate2 < StartDate1;
+        }
+
+        private bool Is_accommodation_available(int accommodationId, DateTime startDate, DateTime endDate)
         {
             // Loop through the reservation list and check for conflicts
             foreach (var reservation in this.myCompany.reservation_list)
@@ -201,7 +216,7 @@ namespace Trabalho_Alojamento_POO
             return true; // No conflicts, available
         }
 
-        private void ShowAvailableAccomodations()
+        private void Show_available_accomodations()
         {
             DateTime selectedStartDate = monthCalendar1.SelectionStart;
             DateTime selectedEndDate = monthCalendar1.SelectionEnd;
@@ -213,7 +228,7 @@ namespace Trabalho_Alojamento_POO
             // Add Rooms to the ListBox
             foreach (var room in this.myCompany.room_list)
             {
-                if (IsAccommodationAvailable(room.Id, selectedStartDate, selectedEndDate))
+                if (Is_accommodation_available(room.Id, selectedStartDate, selectedEndDate))
                 {
                     this.lbx_Reservations.Items.Add($"Room ID: {room.Id}, Capacity: {room.capacity}, Area: {room.area}m², Floor: {room.floor}");
                     this.accomodationID_listbox.Add(room.Id);
@@ -223,7 +238,7 @@ namespace Trabalho_Alojamento_POO
             // Add Villas to the ListBox
             foreach (var villa in this.myCompany.villa_list)
             {
-                if (IsAccommodationAvailable(villa.Id, selectedStartDate, selectedEndDate))
+                if (Is_accommodation_available(villa.Id, selectedStartDate, selectedEndDate))
                 {
                     this.lbx_Reservations.Items.Add($"Villa ID: {villa.Id}, Capacity: {villa.capacity}, Area: {villa.area}m², Kitchen: {villa.kitchen}, Sofa Bed: {villa.sofa_bed}, Living Room: {villa.living_room}");
                     this.accomodationID_listbox.Add(villa.Id);
@@ -242,24 +257,31 @@ namespace Trabalho_Alojamento_POO
                     && this.myCompany.villa_list.Find(villa => villa.Id == accomodationId) == null) MessageBox.Show("No accomodation with that id");
                 else
                 {
-                    
-                    Reservations reservation = new Reservations(monthCalendar1.SelectionStart, monthCalendar1.SelectionEnd, accomodationId, this.myCompany.reservation_list.Count + 1, Convert.ToInt32(this.tb_employee_id_reservation.Text), Convert.ToInt64(this.tb_fiscal_number_reservation.Text));
-                    this.myCompany.Add_reservation(reservation);
+
+                    day_counter = new Helper_class();
+                    int number_of_days = day_counter.Calculate_days(monthCalendar1.SelectionStart, monthCalendar1.SelectionEnd);
+                    if (number_of_days > 0) {
+                        MessageBox.Show("Congratulations, you have just reserved " + number_of_days.ToString() + " days");
+                        Reservations reservation = new Reservations(monthCalendar1.SelectionStart, monthCalendar1.SelectionEnd, accomodationId, this.myCompany.reservation_list.Count + 1, Convert.ToInt32(this.tb_employee_id_reservation.Text), Convert.ToInt64(this.tb_fiscal_number_reservation.Text));
+                        this.myCompany.Add_reservation(reservation);
+                    } 
+                    else MessageBox.Show("Please Select a valid amount of days");
+
+
                 }
             }
             catch (Exception ex)
             {
+                Logger.Log_error("Information was invaled", ex);
                 MessageBox.Show("Please insert valid information");
             }
         }
 
         private void bt_search_dates_Click(object sender, EventArgs e)
         {
-            ShowAvailableAccomodations();
+            Show_available_accomodations();
         }
+        #endregion
 
-        private void lbx_Reservations_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
     }
 }

@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Trabalho_Alojamento_POO
 {
-    public class Person
+    public abstract class Person
     {
         public int age { get; set; }
         public string name { get; set; }

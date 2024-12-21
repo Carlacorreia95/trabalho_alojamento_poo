@@ -26,7 +26,7 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void Initialize_component()
         {
             TabPage tp_room;
             Remove_room_button = new Button();
@@ -799,7 +799,6 @@
             lbx_Reservations.Name = "lbx_Reservations";
             lbx_Reservations.Size = new Size(279, 204);
             lbx_Reservations.TabIndex = 54;
-            lbx_Reservations.SelectedIndexChanged += lbx_Reservations_SelectedIndexChanged;
             // 
             // remove_reservation_button
             // 
